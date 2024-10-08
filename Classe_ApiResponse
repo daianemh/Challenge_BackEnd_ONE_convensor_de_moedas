@@ -1,0 +1,23 @@
+public class ApiResponse {
+    private String baseCurrency;
+    private String date;
+    private String rates;
+
+    public ApiResponse(String baseCurrency, String date, String rates) {
+        this.baseCurrency = baseCurrency;
+        this.date = date;
+        this.rates = rates;
+    }
+
+    public String getBaseCurrency() {
+        return baseCurrency;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getRates() {
+        return rates;
+    }
+}
