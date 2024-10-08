@@ -1,0 +1,57 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        ApiRequest apiRequest = new ApiRequest();
+        String response = apiRequest.getExchangeRates();
+
+        CurrencyConverter converter = new CurrencyConverter(response);
+
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("Conversor de Moedas");
+            System.out.println("1. USD para EUR");
+            System.out.println("2. USD para BRL");
+            System.out.println("3. BRL para EUR");
+            System.out.println("4. BRL para USD");
+            System.out.println("5. Sair");
+            System.out.print("Escolha uma opção: ");
+
+            int option = scanner.nextInt();
+
+            if (option == 5) {
+                System.out.println("Saindo...");
+                break;
+            }
+
+            System.out.print("Digite o valor a ser convertido: ");
+            double amount = scanner.nextDouble();
+
+            double result = 0;
+
+            switch (option) {
+                case 1:
+                    result = converter.convert("USD", "EUR", amount);
+                    System.out.println("Resultado: " + result + " EUR");
+                    break;
+                case 2:
+                    result = converter.convert("USD", "BRL", amount);
+                    System.out.println("Resultado: " + result + " BRL");
+                    break;
+                case 3:
+                    result = converter.convert("BRL", "EUR", amount);
+                    System.out.println("Resultado: " + result + " EUR");
+                    break;
+                case 4:
+                    result = converter.convert("BRL", "USD", amount);
+                    System.out.println("Resultado: " + result + " USD");
+                    break;
+                default:
+                    System.out.println("Opção inválida.");
+            }
+        }
+
+        scanner.close();
+    }
+}
